@@ -1,5 +1,7 @@
 # We Tasks - A simple to do list
 
+**DEMO** https://nicolascbarbosa.github.io/we-tasks/
+
 Tecnologias usadas:
   - React
   - Redux

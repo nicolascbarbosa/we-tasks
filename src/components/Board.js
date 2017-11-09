@@ -5,14 +5,17 @@ import BoardFilters from './BoardFilters'
 import BoardCard from './BoardCard'
 import BoardPreview from './BoardPreview'
 
-import { SHOW_ALL, SHOW_COMPLETED } from '../constants/TodoFilters'
+import { SHOW_ALL, SHOW_COMPLETED } from '../constants/TodoPreviews'
+import { SHOW_RECENTS } from '../constants/TodoOrderBy'
 
-const TODO_FILTERS = {
+
+const TODO_PREVIEW = {
   [SHOW_ALL]: () => true,
   [SHOW_COMPLETED]: todo => todo.completed
 }
 
 export default class Board extends Component {
+
   static propTypes = {
     addTodo: PropTypes.func.isRequired,    
     todos: PropTypes.array.isRequired,
@@ -25,32 +28,23 @@ export default class Board extends Component {
     }
   }
 
-  state = { filter: SHOW_ALL }
-
-  handleClearCompleted = () => {
-    this.props.actions.clearCompleted()
-  }
+  state = { filter: SHOW_ALL, order: SHOW_RECENTS }
 
   handleShow = filter => {
     this.setState({ filter })
   }
-
-  renderFooter(completedCount) {
-    const { todos } = this.props
-    const { filter } = this.state
-
-    if (todos.length) {
-      return (
-        <BoardPreview filter={filter} onShow={this.handleShow} />
-      )
-    }
+  
+  handleOrder = order => {
+    if(this.state.order == order) return
+    
+    this.setState({ order });
   }
 
   render() {
     const { todos, actions } = this.props
-    const { filter } = this.state
+    const { filter, order } = this.state
 
-    const filteredTodos = todos.filter(TODO_FILTERS[filter])
+    const filteredTodos = todos.filter(TODO_PREVIEW[filter])
 
     return (
       <section className="board">
@@ -58,9 +52,11 @@ export default class Board extends Component {
                     onSave={this.handleSave}
                     placeholder="type your task" />   
      
-        <BoardFilters/>
-        <BoardCard  filteredTodos={filteredTodos} {...actions} />
-        {this.renderFooter()}
+        <BoardFilters order={order} onOrder={this.handleOrder}/>
+        <BoardCard order={order} filteredTodos={filteredTodos} {...actions} />
+        {
+           todos.length ? <BoardPreview filter={filter} onShow={this.handleShow} /> : ''
+        }
       </section>
     )
   }

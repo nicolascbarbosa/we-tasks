@@ -46,6 +46,7 @@
     @extend %buttons-styled;
     position: relative;
     padding: rem(8) rem(15);
+    min-width: rem(90);    
     height: 31px;
     color: #FFF;
     font-size: rem(12);
@@ -71,7 +72,7 @@
 
     &:before {
       background-color: #ff3730;
-      background-image: url('/img/ic_delete_white_36px.svg');      
+      background-image: url('https://nicolascbarbosa.github.io/we-tasks/img/ic_delete_white_36px.svg');      
     }
 
   }
@@ -84,7 +85,7 @@
 
     &:before {
       background-color: #7dc4a1;  
-      background-image: url('/img/ic_done_white_32px.svg');
+      background-image: url('https://nicolascbarbosa.github.io/we-tasks/img/ic_done_white_32px.svg');
     }
     
   }

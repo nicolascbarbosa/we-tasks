@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { SHOW_ALL, SHOW_COMPLETED } from '../constants/TodoFilters'
+import { SHOW_ALL, SHOW_COMPLETED } from '../constants/TodoPreviews'
 
 const FILTER_TITLES = {
   [SHOW_ALL]: 'Todas',
@@ -14,19 +14,18 @@ export default class BoardPreview extends Component {
     onShow: PropTypes.func.isRequired
   }
 
-
-  renderFilterLink(filter) {
-    const title = FILTER_TITLES[filter]
+  renderButtons(item) {
+    const title = FILTER_TITLES[item]
     const { filter: selectedFilter, onShow } = this.props
-
+    
     return (
-      <button key={filter} className="btn-views -selected" 
+      <button key={item} className="btn-views -selected" 
               type="button"
               className={classnames(
                 'btn-views', { 
-                  selected : filter === selectedFilter 
+                  '-selected' : item === selectedFilter 
                 })}
-                onClick={() => onShow(filter)}
+                onClick={() => onShow(item)}
       >
         {title}
       </button>  
@@ -38,8 +37,8 @@ export default class BoardPreview extends Component {
     return (
       <div className="board-preview">
         <span className="label">Visualização:</span>        
-        {[ SHOW_ALL, SHOW_COMPLETED ].map(filter =>
-          this.renderFilterLink(filter)
+        {[ SHOW_ALL, SHOW_COMPLETED ].map(item =>
+          this.renderButtons(item)
         )}  
       </div>  
 
