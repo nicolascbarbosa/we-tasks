@@ -1,23 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { persistStore, autoRehydrate } from 'redux-persist';
+import { save, load } from 'redux-localstorage-simple'
 
 import App from './containers/App'
 import reducers from './reducers'
 
 import './scss/index.scss';
 
-const store = createStore(
-  reducers,
-  undefined,
-  compose(
-    autoRehydrate,
-  ),
-);
+const createStoreWithMiddleware = applyMiddleware(
+    save() 
+)(createStore)
 
-persistStore(store);
+const store = createStoreWithMiddleware(
+  reducers,    
+  load()
+)
 
 render(
   <Provider store={store}>
