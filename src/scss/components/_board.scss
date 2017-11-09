@@ -1,0 +1,11 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: rem(500);
+  border-radius: rem(2);
+  margin: rem(30) auto 0;
+  padding: rem(20) rem(15);
+  background-color: #f4f4f4;
+
+  box-shadow: 2px 7px 17px -4px rgba(0,0,0,0.42);
+}

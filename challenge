@@ -1,0 +1,25 @@
+Deve haver um campo de texto onde o usuário digita uma anotação e ao pressionar
+ENTER​ o texto do campo se apaga e a anotação aparece em uma listagem logo abaixo.
+
+- A listagem deve ter uma opção de ordenação que ficará logo abaixo do campo. As
+opções de ordenação serão​ ​“mais​ ​recentes”​ e​ ​“mais​ ​antigas​”.
+- Cada anotação na listagem terá um botão com a opção de excluir e outro botão para
+marcar como completada ou não.
+- Logo abaixo da listagem deve haver duas opções de filtro para as anotações “Exibir:
+Todas​ /​ Completadas​” .
+- Os dados devem ser salvos utilizando Local​ ​Storage​.
+
+REQUISITOS
+- NÃO​ utilizar boilerplates​ de React (Ex: create-react-app, next.js, etc...) - OK
+- Utilizar ES6/ES7​. - OK
+- Organizar a aplicação em módulos.
+- Use Sass​ para escrever o CSS. - OK
+- Hospede o código em um repositório no Github e utilizando o Github Pages crie uma
+demo do mesmo.
+- E fique livre para nos mostrar sua criatividade no layout.
+
+BONUS
+- Utilizar uma biblioteca de Flux​ preferencialmente Redux. - OK
+- Implementar testes​ ​unitários​. 
+- Utilizar Webpack. - OK
+- Fazer o build da aplicação utilizando npm​ ​scripts - OK

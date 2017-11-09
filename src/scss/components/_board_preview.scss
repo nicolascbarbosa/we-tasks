@@ -1,0 +1,42 @@
+.board-preview {
+  
+    & {
+      flex-basis: 100%;
+      margin-top: rem(15);  
+    }
+  
+    & > .label {
+      font-weight: 600;
+      margin-right: rem(15);
+      color: #888;
+    }
+  
+    & > .btn-views {
+      
+      & {
+        @extend %buttons-styled;
+        display: inline-block;  
+        border: rem(2) solid #f2bd2e;
+        padding: rem(6) rem(10);
+        color: #f2bd2e;
+        font-size: rem(12);
+      }
+  
+      &:hover,
+      &.-selected {
+        background-color: #f2bd2e;
+        color: #FFF;
+      }
+  
+  
+    
+      & + .btn-views {
+        margin-left: rem(10)
+      }
+      
+    }
+  
+  }
+  
+  
+  

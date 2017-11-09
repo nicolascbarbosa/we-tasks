@@ -1,0 +1,95 @@
+.board-cards {
+
+  & {
+    flex-basis: 100%;
+    margin: rem(15) 0;
+  }
+
+  & > .cards {
+    @extend %list-unstyled;    
+  }
+
+  & > .cards > .card {
+
+    & {
+      padding: rem(12) rem(10);
+      border-radius: rem(5);
+      background-color: #FFF;
+      text-align: right;
+      color: #555;
+      font-size: rem(16);
+    }
+
+    & + .card {
+      margin-top: rem(10);
+    }
+
+    &.completed {
+      border-left: rem(10) solid #7dc4a1;
+    }
+    
+  }
+
+  & > .cards > .card > .text {
+    display: block;
+    border-bottom: rem(1) solid #555;
+    margin-bottom: rem(10);
+    padding: rem(10) rem(5);
+    text-align: left;
+  }
+
+}
+
+.btn-card-action {
+
+  & {
+    @extend %buttons-styled;
+    position: relative;
+    padding: rem(8) rem(15);
+    height: 31px;
+    color: #FFF;
+    font-size: rem(12);
+    font-weight: 600;
+  }
+
+  &:before {
+    @include pseudo-element();
+    top: 0; 
+    left: -30px;    
+    width: 30px;
+    height: 31px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  &.-delete {
+
+    & {
+      background-color: #ff6f69;
+    }
+
+    &:before {
+      background-color: #ff3730;
+      background-image: url('/assets/img/ic_delete_white_36px.svg');      
+    }
+
+  }
+
+  &.-complete {
+
+    & {
+      background-color: #88d8b0;
+    }
+
+    &:before {
+      background-color: #7dc4a1;  
+      background-image: url('/assets/img/ic_done_white_32px.svg');
+    }
+    
+  }
+
+  & + .btn-card-action {
+    margin-left: rem(45);
+  }
+}

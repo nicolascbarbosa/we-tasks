@@ -1,0 +1,18 @@
+%list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+%buttons-styled {
+
+  & {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
