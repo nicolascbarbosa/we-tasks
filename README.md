@@ -22,7 +22,10 @@ Instale as dependencias e as devDepencias e inicie o server
 $ cd we-tasks
 $ npm install
 $ npm start - para ficar observando e levantar um servidor na porta 8001
+$ npm run test - executar testes
+$ npm run lint - executar eslint sobre o diretório ./src
 ```
+
 
 ### Prod
 

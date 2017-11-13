@@ -1,56 +1,55 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class BoardInput extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
-    text: PropTypes.string,
-    placeholder: PropTypes.string,
-    editing: PropTypes.bool,
-    newTodo: PropTypes.bool
+    placeholder: PropTypes.string.isRequired,
+    newTodo: PropTypes.bool.isRequired,
+    text: PropTypes.string
+  }
+
+  static defaultProps = {
+    text: ''
   }
 
   state = {
     text: this.props.text || ''
   }
 
-  handleSubmit = e => {
-    const text = e.target.value.trim()
+  handleSubmit = (e) => {
+    const text = e.target.value.trim();
     if (e.which === 13) {
-      this.props.onSave(text)
+      this.props.onSave(text);
       if (this.props.newTodo) {
-        this.setState({ text: '' })
+        this.setState({ text: '' });
       }
     }
   }
 
-  handleChange = e => {
-    this.setState({ text: e.target.value })
+  handleChange = (e) => {
+    this.setState({ text: e.target.value });
   }
 
-  handleBlur = e => {
+  handleBlur = (e) => {
     if (!this.props.newTodo) {
-      this.props.onSave(e.target.value)
+      this.props.onSave(e.target.value);
     }
   }
 
   render() {
     return (
       <div className="board-form">
-        <input className={
-          classnames('control', {
-            edit: this.props.editing,
-            'new-todo': this.props.newTodo
-          })}
+        <input
+          className="control"
           type="text"
           placeholder={this.props.placeholder}
-          autoFocus="true"
           value={this.state.text}
           onBlur={this.handleBlur}
           onChange={this.handleChange}
-          onKeyDown={this.handleSubmit} />
-      </div>        
-    )
+          onKeyDown={this.handleSubmit}
+        />
+      </div>
+    );
   }
 }

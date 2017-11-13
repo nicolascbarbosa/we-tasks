@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, COMPLETE_TODO } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, COMPLETE_TODO } from '../constants/ActionTypes';
 
 
 export default function todos(state = [], action) {
@@ -11,21 +11,16 @@ export default function todos(state = [], action) {
           completed: false,
           text: action.text
         }
-      ]
+      ];
 
     case DELETE_TODO:
-      return state.filter(todo =>
-        todo.id !== action.id
-      )
+      return state.filter(todo => (todo.id !== action.id));
 
     case COMPLETE_TODO:
       return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, completed: !todo.completed } :
-          todo
-      )
+        (todo.id === action.id ? { ...todo, completed: !todo.completed } : todo));
 
     default:
-      return state
+      return state;
   }
 }
