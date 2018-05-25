@@ -12,11 +12,11 @@ Todas​ /​ Completadas​” .
 REQUISITOS
 - NÃO​ utilizar boilerplates​ de React (Ex: create-react-app, next.js, etc...) - OK
 - Utilizar ES6/ES7​. - OK
-- Organizar a aplicação em módulos.
+- Organizar a aplicação em módulos. - OK
 - Use Sass​ para escrever o CSS. - OK
 - Hospede o código em um repositório no Github e utilizando o Github Pages crie uma
-demo do mesmo.
-- E fique livre para nos mostrar sua criatividade no layout.
+demo do mesmo. - OK 
+- E fique livre para nos mostrar sua criatividade no layout. 
 
 BONUS
 - Utilizar uma biblioteca de Flux​ preferencialmente Redux. - OK

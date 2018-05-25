@@ -1,20 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { save, load } from 'redux-localstorage-simple';
 
-import App from './containers/App';
-import reducers from './reducers';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContextProvider } from 'react-dnd';
 
-import './scss/index.scss';
+import { store } from 'Store';
 
-const createStoreWithMiddleware = applyMiddleware(save())(createStore);
-const store = createStoreWithMiddleware(reducers, load());
+import App from './app';
 
 render(
   <Provider store={store}>
-    <App />
+    <DragDropContextProvider backend={HTML5Backend}>
+      <App />
+    </DragDropContextProvider>
   </Provider>,
-  document.getElementById('app')
+  global.document.getElementById('app'),
 );
