@@ -1,6 +1,8 @@
+@import "app";
+
 .header {
-  flex-basis: 100%;
-  padding: rem(15) rem(10);
+  flex: 1 100%;
+  padding: rem(15px) rem(10px);
   background-color: #866bff;
 }
 

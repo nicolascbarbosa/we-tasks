@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { InputForm } from './components';
+
 export default class Board extends React.Component {
   render() {
-    return <div>Boards</div>;
+    <div>
+      <InputForm />
+      <BoardColumn />
+      <BoardColumn />
+    </div>;
   }
 }

@@ -1,2 +1,2 @@
-export { default as Header } from './Header/Header';
-export { default as Board } from './Board/Board';
+export { default as Header } from './Header';
+export { default as Board } from './Board';

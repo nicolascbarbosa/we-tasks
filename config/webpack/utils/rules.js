@@ -1,6 +1,8 @@
 import { concat } from 'lodash';
 import styles from '../../../src/assets/scss';
 
+console.log(styles)
+
 /* eslint-disable import/no-extraneous-dependencies */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 

@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Header } from 'Containers';
+import { Header, Board } from 'Containers';
+
+import './App.scss';
 
 const App = () => (
-  <div>
+  <section className="appContent">
     <Header title="We Tasks" />
-  </div>
+    <Board />
+  </section>
 );
 
 export default App;
