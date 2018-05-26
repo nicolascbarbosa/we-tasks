@@ -2,13 +2,15 @@ import React from 'react';
 
 import { Header, Board } from 'Containers';
 
+import Container from './components';
+
 import './App.scss';
 
 const App = () => (
-  <section className="appContent">
+  <Container>
     <Header title="We Tasks" />
     <Board />
-  </section>
+  </Container>
 );
 
 export default App;

@@ -1,47 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
-export default class BoardCard extends Component {
-  static propTypes = {
-    order: PropTypes.string.isRequired,
-    filteredTodos: PropTypes.array.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-    completeTodo: PropTypes.func.isRequired,
-  };
+import styles from './Cards.scss';
 
-  orderBy(todos) {
-    const { order } = this.props;
-    return order === SHOW_RECENTS ? todos.reverse() : todos;
-  }
+const Cards = ({ children }) => <ul className={styles.card}>{children}</ul>;
 
-  render() {
-    const { filteredTodos, completeTodo, deleteTodo } = this.props;
+Cards.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
-    const listTodos = this.orderBy(filteredTodos);
-
-    return (
-      <div className="board-cards">
-        <ul className="cards">
-          {listTodos.map(todo => (
-            <li
-              className={classnames('card', {
-                completed: todo.completed,
-              })}
-              key={todo.id}
-              todo={todo}
-            >
-              <span className="text">{todo.text}</span>
-              <button className="btn-card-action -delete" onClick={() => deleteTodo(todo.id)}>
-                Excluir
-              </button>
-              <button className="btn-card-action -complete" onClick={() => completeTodo(todo.id)}>
-                {!todo.completed ? 'Completo' : 'Desmarcar'}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+export default Cards;

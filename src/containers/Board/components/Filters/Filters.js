@@ -1,43 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { SHOW_RECENTS, SHOW_OLDERS } from '../constants/TodoOrderBy';
 
-const FILTER_TITLES = {
-  [SHOW_RECENTS]: 'Mais Recentes',
-  [SHOW_OLDERS]: 'Mais Antigas'
-};
+import { ORDER_RECENT, ORDER_OLD } from '../../constants';
 
-export default class BoardFilters extends Component {
+import styles from './Filters.scss';
+
+export default class Filters extends React.Component {
   static propTypes = {
-    order: PropTypes.string.isRequired,
-    onOrder: PropTypes.func.isRequired
+    keyDataOrder: PropTypes.string.isRequired,
+    currentOrderVisibility: PropTypes.string.isRequired,
+    changeOrderVisibility: PropTypes.func.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.handleShowOrder = this.handleShowOrder.bind(this);
   }
 
-  renderButtons(item) {
-    const title = FILTER_TITLES[item];
-    const { order: selectedOrder, onOrder } = this.props;
-
-    return (
-      <button
-        key={item}
-        type="button"
-        className={classnames('btn-filter', {
-                  '-selected': item === selectedOrder
-                })}
-        onClick={() => onOrder(item)}
-      >
-        {title}
-      </button>
-    );
+  handleShowOrder(type) {
+    const { keyDataOrder, currentOrderVisibility, changeOrderVisibility } = this.props;
+    if (type !== currentOrderVisibility) {
+      changeOrderVisibility(keyDataOrder, type);
+    }
   }
 
   render() {
     return (
       <div className="board-filters">
         <span className="label">Ordenar:</span>
-        {[SHOW_RECENTS, SHOW_OLDERS].map(item =>
-          this.renderButtons(item))}
+        <button onClick={() => this.handleShowOrder(ORDER_RECENT)}>Mais Recentes</button>
+        <button onClick={() => this.handleShowOrder(ORDER_OLD)}>Mais Antigas</button>
       </div>
     );
   }

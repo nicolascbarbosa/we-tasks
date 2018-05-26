@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import todos from '../containers/reducers';
+import board from './Board/reducers';
 
 const reducers = combineReducers({
-  todos,
+  board,
 });
 
 export default reducers;

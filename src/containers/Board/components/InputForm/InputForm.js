@@ -1,54 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class BoardInput extends Component {
+import styles from './InputForm.scss';
+
+export default class InputForm extends React.Component {
   static propTypes = {
-    onSave: PropTypes.func.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    newTodo: PropTypes.bool.isRequired,
-    text: PropTypes.string,
+    onSubmit: PropTypes.func.isRequired,
   };
 
-  static defaultProps = {
-    text: '',
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    text: this.props.text || '',
-  };
+    this.state = {
+      value: '',
+    };
 
-  handleSubmit = (e) => {
-    const text = e.target.value.trim();
-    if (e.which === 13) {
-      this.props.onSave(text);
-      if (this.props.newTodo) {
-        this.setState({ text: '' });
-      }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const value = global.document.getElementById('addTask').value.trim();
+    if (value !== '') {
+      this.props.onSubmit(value);
+      this.setState({ value: '' });
     }
-  };
+  }
 
-  handleChange = (e) => {
-    this.setState({ text: e.target.value });
-  };
-
-  handleBlur = (e) => {
-    if (!this.props.newTodo) {
-      this.props.onSave(e.target.value);
-    }
-  };
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
 
   render() {
     return (
       <div className="board-form">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
+            id="addTask"
             className="control"
             type="text"
-            placeholder={this.props.placeholder}
-            value={this.state.text}
-            onBlur={this.handleBlur}
+            placeholder="Adicione uma Tarefa"
+            value={this.state.value}
+            onBlur={this.handleSubmit}
             onChange={this.handleChange}
-            onKeyDown={this.handleSubmit}
           />
         </form>
       </div>

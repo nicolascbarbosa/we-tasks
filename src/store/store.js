@@ -1,6 +1,7 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
+import localStorageMiddleware from './middlewares';
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers =
@@ -9,9 +10,10 @@ const composeEnhancers =
     : compose;
 /* eslint-enable */
 
-const localStorageState = {};
+const localStorageState = JSON.parse(global.window.localStorage.getItem('state'));
+const middlewares = applyMiddleware(localStorageMiddleware);
 
-const persistedState = { todos: {} };
-const store = createStore(reducers, persistedState, composeEnhancers());
+const persistedState = localStorageState ? { todos: { board: localStorageState } } : {};
+const store = createStore(reducers, persistedState, composeEnhancers(middlewares));
 
 export default store;
