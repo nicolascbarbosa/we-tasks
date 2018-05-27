@@ -4,7 +4,6 @@ import { Column, Cards, CardItem, Filters, InputForm, Title } from './components
 
 export default class Board extends React.Component {
   render() {
-    console.log(this.props);
     const { tasks } = this.props;
     return (
       <div>

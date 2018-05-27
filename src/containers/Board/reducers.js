@@ -1,6 +1,6 @@
 import { INITIAL_STATE, ActionTypes as types } from './constants';
 
-export default function todos(state = INITIAL_STATE, action) {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_TODO:
       return {
@@ -46,4 +46,4 @@ export default function todos(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
+};
