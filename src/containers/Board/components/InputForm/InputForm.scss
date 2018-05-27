@@ -1,22 +1,13 @@
-// .board-form {
+@import "app";
 
-//   & {
-//     flex-basis: 100%; 
-//   }
+.boardForm {
+  flex: 0 100%;  
+}
 
-//   & > .control {
-
-//     & {
-//       display: block;
-//       width: 100%;
-//       padding: rem(10) rem(5);
-//     }
-
-//     &:focus {
-
-//     }
-    
-//   }
-
-
-// }
+.control {
+  display: block;
+  outline: none;
+  border: 0;
+  width: 100%;
+  padding: rem(15px) rem($paddingAlignBoxContent);
+}

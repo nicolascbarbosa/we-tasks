@@ -2,11 +2,13 @@ import React from 'react';
 
 import { Column, Cards, CardItem, Filters, InputForm, Title } from './components';
 
+import styles from './Board.scss';
+
 export default class Board extends React.Component {
   render() {
     const { tasks } = this.props;
     return (
-      <div>
+      <div className={styles.board}>
         <InputForm onSubmit={this.props.addTodo} />
         <Column>
           <Title title="Todas" />

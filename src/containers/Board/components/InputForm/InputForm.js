@@ -34,13 +34,13 @@ export default class InputForm extends React.Component {
 
   render() {
     return (
-      <div className="board-form">
+      <div className={styles.boardForm}>
         <form onSubmit={this.handleSubmit}>
           <input
             id="addTask"
-            className="control"
+            className={styles.control}
             type="text"
-            placeholder="Adicione uma Tarefa"
+            placeholder="Adicione uma Tarefa ao TODO"
             value={this.state.value}
             onBlur={this.handleSubmit}
             onChange={this.handleChange}

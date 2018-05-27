@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './CardItem.scss';
+
 const CardItem = ({ id, text, deleteCard }) => (
-  <li className="">
-    <span className="text">{text}</span>
-    <button className="btn-card-action -delete" onClick={() => deleteCard(id)}>
+  <li className={styles.cardItem}>
+    <span className={styles.text}>{text}</span>
+    <button className={styles.btnDeleteCard} onClick={() => deleteCard(id)}>
       Excluir
     </button>
   </li>

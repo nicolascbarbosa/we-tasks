@@ -1,12 +1,16 @@
 @import "app";
 
 .header {
+  display: flex;
+  align-items: center;
   flex: 1 100%;
-  padding: rem(15px) rem(10px);
+  height: rem($headerHeight);
   background-color: #866bff;
 }
 
 .title {
-  color: #fff;
+  margin: 0 auto;
+  font-size: rem(21px);
   text-align: center;
+  color: #fff;
 }

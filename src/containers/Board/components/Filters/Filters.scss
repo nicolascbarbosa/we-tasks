@@ -1,41 +1,34 @@
-// .board-filters {
+@import "app";
 
-//   & {
-//     flex-basis: 100%;
-//     margin-top: rem(15);  
-//   }
+.filters {
+  position: fixed;
+  bottom: 30px;
+  background-color: #f4f4f4;
+}
 
-//   & > .label {
-//     font-weight: 600;
-//     margin-right: rem(15);
-//     color: #888;
-//   }
+.label {
+  font-weight: 600;
+  margin-right: rem(15px);
+  color: #888;
+}
 
-//   & > .btn-filter {
-    
-//     & {
-//       @extend %buttons-styled;
-//       display: inline-block;  
-//       border: rem(2) solid #4365ef;
-//       padding: rem(6) rem(10);
-//       color: #4365ef;
-//       font-size: rem(12);
-//     }
+.btnFilter {
+  & {
+    @extend %buttonsUnstyled;
+    display: inline-block;
+    border: rem(2px) solid #4365ef;
+    padding: rem(6px) rem(10px);
+    color: #4365ef;
+    font-size: rem(12px);
+  }
 
-//     &:hover,
-//     &.-selected {
-//       background-color: #4365ef;
-//       color: #FFF;
-//     }
+  &:hover,
+  &.selected {
+    background-color: #4365ef;
+    color: #fff;
+  }
 
-
-  
-//     & + .btn-filter {
-//       margin-left: rem(10)
-//     }
-    
-//   }
-
-// }
-
-
+  & + .btnFilter {
+    margin-left: rem(10px);
+  }
+}

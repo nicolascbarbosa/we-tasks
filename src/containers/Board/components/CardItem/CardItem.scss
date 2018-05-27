@@ -1,0 +1,49 @@
+@import "app";
+
+.cardItem {
+  padding: rem(12px) rem(10px);
+  border-radius: rem(5px);
+  background-color: #fff;
+  font-size: rem(16px);
+  text-align: right;
+  color: #555;
+}
+
+.cardItem {
+  margin-top: rem(10px);
+}
+
+.text {
+  display: block;
+  border-bottom: rem(1px) solid #555;
+  margin-bottom: rem(10px);
+  padding: rem(10px) rem(5px);
+  text-align: left;
+}
+
+.btnDeleteCard {
+  & {
+    @extend %buttonsUnstyled;
+    position: relative;
+    padding: rem(8px) rem(15px);
+    min-width: rem(90px);
+    height: 31px;
+      background-color: #ff6f69;    
+    color: #fff;
+    font-size: rem(12px);
+    font-weight: 600;
+  }
+
+  &:before {
+    @include pseudo-element();
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 31px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #ff3730;
+    background-image: url("https://nicolascbarbosa.github.io/we-tasks/img/ic_delete_white_36px.svg");
+  }
+}

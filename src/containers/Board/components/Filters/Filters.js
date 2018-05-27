@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cn from 'classnames';
 
 import { ORDER_RECENT, ORDER_OLD } from '../../constants';
 
@@ -27,11 +27,26 @@ export default class Filters extends React.Component {
   }
 
   render() {
+    const { currentOrderVisibility } = this.props;
     return (
-      <div className="board-filters">
-        <span className="label">Ordenar:</span>
-        <button onClick={() => this.handleShowOrder(ORDER_RECENT)}>Mais Recentes</button>
-        <button onClick={() => this.handleShowOrder(ORDER_OLD)}>Mais Antigas</button>
+      <div className={styles.filters}>
+        <span className={styles.label}>Ordenar:</span>
+        <button
+          className={cn(styles.btnFilter, {
+            [styles.selected]: currentOrderVisibility === ORDER_RECENT,
+          })}
+          onClick={() => this.handleShowOrder(ORDER_RECENT)}
+        >
+          Mais Recentes
+        </button>
+        <button
+          className={cn(styles.btnFilter, {
+            [styles.selected]: currentOrderVisibility === ORDER_OLD,
+          })}
+          onClick={() => this.handleShowOrder(ORDER_OLD)}
+        >
+          Mais Antigas
+        </button>
       </div>
     );
   }
