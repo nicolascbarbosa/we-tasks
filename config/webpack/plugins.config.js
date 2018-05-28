@@ -14,7 +14,7 @@ export default envFile => ({
       filename: '[name].css',
     }),
     new HtmlWebpackPlugin({
-      hash: true,
+      hash: false,
       template: `${paths.src}/index.html`,
       minify: {
         collapseWhitespace: true,
