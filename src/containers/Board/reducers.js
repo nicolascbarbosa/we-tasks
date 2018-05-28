@@ -10,7 +10,7 @@ export default (state = INITIAL_STATE, action) => {
           data: [
             ...state.todos.data,
             {
-              id: state.todos.data.reduce((maxId, task) => Math.max(task.id, maxId), -1) + 1,
+              id: action.payload.id,
               text: action.payload.value,
             },
           ],
@@ -42,7 +42,20 @@ export default (state = INITIAL_STATE, action) => {
           order: action.payload.newOrder,
         },
       };
-
+    case types.MOVE_ITEM:
+      return {
+        ...state,
+        [action.payload.item.dragDataKey]: {
+          ...state[action.payload.item.dragDataKey],
+          data: [
+            ...state[action.payload.item.dragDataKey].data,
+            {
+              id: action.payload.item.id,
+              text: action.payload.item.text,
+            },
+          ],
+        },
+      };
     default:
       return state;
   }

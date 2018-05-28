@@ -1,20 +1,24 @@
+import uuidv4 from 'uuid/v4';
+
 import * as actions from '../src/containers/Board/actions';
 import { ActionTypes as types, ORDER_RECENT, ORDER_OLD } from '../src/containers/Board/constants';
 
 describe('board actions creators', () => {
   it('should create an action to ADD a TODO item', () => {
+    const id = uuidv4();
     const value = 'New Task';
     const expectedAction = {
       type: types.ADD_TODO,
       payload: {
+        id,
         value,
       },
     };
-    expect(actions.addTodo(value)).toEqual(expectedAction);
+    expect(actions.addTodo(value, id)).toEqual(expectedAction);
   });
 
   it('should create an action to DELETE a TODO item', () => {
-    const id = 1;
+    const id = uuidv4();
     const expectedAction = {
       type: types.DELETE_TODO,
       payload: {
@@ -24,7 +28,7 @@ describe('board actions creators', () => {
     expect(actions.deleteTodo(id)).toEqual(expectedAction);
   });
   it('should create an action to DELETE a COMPLETE item', () => {
-    const id = 20;
+    const id = uuidv4();
     const expectedAction = {
       type: types.DELETE_COMPLETE,
       payload: {

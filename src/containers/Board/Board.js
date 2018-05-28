@@ -1,52 +1,62 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Column, Cards, CardItem, Filters, InputForm, Title } from './components';
 
 import styles from './Board.scss';
 
-export default class Board extends React.Component {
-  render() {
-    const { tasks } = this.props;
-    return (
-      <div className={styles.board}>
-        <InputForm onSubmit={this.props.addTodo} />
-        <Column>
-          <Title title="Todas" />
-          <Cards>
-            {tasks.todos.data.map(item => (
-              <CardItem
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                deleteCard={this.props.deleteTodo}
-              />
-            ))}
-          </Cards>
-          <Filters
-            keyDataOrder="todos"
-            currentOrderVisibility={tasks.todos.order}
-            changeOrderVisibility={this.props.orderVisibility}
+const Board = ({
+  tasks, addTodo, deleteTodo, orderVisibility, deleteComplete,
+}) => (
+  <div className={styles.board}>
+    <InputForm onSubmit={addTodo} />
+    <Column>
+      <Title title="Todas" />
+      <Cards dropDataKey="todos">
+        {tasks.todos.data.map(item => (
+          <CardItem
+            key={item.id}
+            id={item.id}
+            text={item.text}
+            deleteCard={deleteTodo}
+            dragDataKey="complete"
           />
-        </Column>
-        <Column>
-          <Title title="Completas" />
-          <Cards>
-            {tasks.complete.data.map(item => (
-              <CardItem
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                deleteCard={this.props.deleteComplete}
-              />
-            ))}
-          </Cards>
-          <Filters
-            keyDataOrder="complete"
-            currentOrderVisibility={tasks.complete.order}
-            changeOrderVisibility={this.props.orderVisibility}
+        ))}
+      </Cards>
+      <Filters
+        keyDataOrder="todos"
+        currentOrderVisibility={tasks.todos.order}
+        changeOrderVisibility={orderVisibility}
+      />
+    </Column>
+    <Column>
+      <Title title="Completas" />
+      <Cards dropDataKey="complete">
+        {tasks.complete.data.map(item => (
+          <CardItem
+            key={item.id}
+            id={item.id}
+            text={item.text}
+            deleteCard={deleteComplete}
+            dragDataKey="todos"
           />
-        </Column>
-      </div>
-    );
-  }
-}
+        ))}
+      </Cards>
+      <Filters
+        keyDataOrder="complete"
+        currentOrderVisibility={tasks.complete.order}
+        changeOrderVisibility={orderVisibility}
+      />
+    </Column>
+  </div>
+);
+
+Board.propTypes = {
+  tasks: PropTypes.object.isRequired,
+  addTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  deleteComplete: PropTypes.func.isRequired,
+  orderVisibility: PropTypes.func.isRequired,
+};
+
+export default Board;

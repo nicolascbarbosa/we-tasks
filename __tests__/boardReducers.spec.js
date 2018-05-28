@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4';
+
 import reducer from '../src/containers/Board/reducers';
 import {
   ActionTypes as types,
@@ -15,12 +17,13 @@ describe('todos reducer', () => {
     const data = {
       type: types.ADD_TODO,
       payload: {
+        id: uuidv4(),
         value: 'New Task',
       },
     };
 
     const dataMock = {
-      id: 0,
+      id: data.payload.id,
       text: data.payload.value,
     };
 
@@ -37,7 +40,7 @@ describe('todos reducer', () => {
     const data = {
       type: types.DELETE_TODO,
       payload: {
-        id: 0,
+        id: uuidv4(),
       },
     };
 
@@ -68,7 +71,7 @@ describe('todos reducer', () => {
     const data = {
       type: types.DELETE_COMPLETE,
       payload: {
-        id: 0,
+        id: uuidv4(),
       },
     };
 

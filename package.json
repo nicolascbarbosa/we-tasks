@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot  --env development",
+    "start":
+      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot  --env development",
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "lint": "eslint ./src",
@@ -65,6 +66,7 @@
     "react-dnd-html5-backend": "^2.6.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "uuid": "^3.2.1"
   }
 }

@@ -6,9 +6,9 @@
   display: flex;
   flex: 1 calc(50% - 15px);
   flex-direction: column;
-  padding: 0 rem($paddingAlignBoxContent) rem(60px);
-  height: 80%;
   border-radius: rem(5px);
+  padding: 0 rem($paddingAlignBoxContent);
+  height: 80%;
   background-color: #f4f4f4;
   box-shadow: 2px 7px 17px -4px rgba(0, 0, 0, 0.42);
 }

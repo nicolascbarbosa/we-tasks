@@ -10,7 +10,10 @@ const composeEnhancers =
     : compose;
 /* eslint-enable */
 
-const localStorageState = JSON.parse(global.window.localStorage.getItem('state'));
+const browserLocalStorage = global.window.localStorage;
+const localStorageState = browserLocalStorage
+  ? JSON.parse(browserLocalStorage.getItem('state'))
+  : {};
 const middlewares = applyMiddleware(localStorageMiddleware);
 
 const persistedState = localStorageState ? { todos: { board: localStorageState } } : {};
